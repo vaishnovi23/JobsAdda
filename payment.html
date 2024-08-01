@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Complete Payment</h1>
+    <div class="container">
+        <button id="rzp-button">Pay Now</button>
+    </div>
+
+    <!-- Load Razorpay Script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        document.getElementById('rzp-button').onclick = function(e) {
+            e.preventDefault();
+
+            var options = {
+                "key": "YOUR_RAZORPAY_KEY_ID", // Replace with your Razorpay Key ID
+                "amount": "1000", // Amount in paise (e.g., 1000 paise = ₹10)
+                "currency": "INR",
+                "name": "Software Jobs Adda",
+                "description": "Prime Membership Payment",
+                "image": "https://example.com/your_logo.png", // Replace with your logo URL
+                "handler": function (response) {
+                    // Handle the payment response
+                    alert("Payment successful: " + response.razorpay_payment_id);
+                    // Optionally, redirect the user to a success page
+                    // window.location.href = 'success.html';
+                },
+                "prefill": {
+                    "name": "John Doe",
+                    "email": "john.doe@example.com",
+                    "contact": "9999999999"
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        };
+    </script>
+</body>
+</html>

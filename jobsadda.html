@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs Adda</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 2rem;
+            flex: 1; /* Allow main to grow and take available space */
+        }
+
+        article {
+            background-color: #fff;
+            padding: 1rem;
+            margin-bottom: 4rem; /* Ensure space for the footer */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            width: 100%;
+            position: relative; /* Ensure footer is at the bottom */
+        }
+
+        .apply-button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            color: #fff;
+            background-color: #333;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 0.25rem;
+            font-weight: bold;
+        }
+
+        .apply-button:hover {
+            background-color: #555;
+        }
+
+        #view-count {
+            margin-top: 2rem;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #333; /* Dark grey */
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-info a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jobs Adda</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Freshers</a></li>
+                <li><a href="#">Experienced</a></li>
+                <li><a href="#">Engineering & IT Jobs</a></li>
+                <li><a href="#">Internships</a></li>
+                <li><a href="PrimeMembership.html">Prime Membership</a></li>
+                <li><a href="Course.html">Java Full Stack Development Course</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <h2>Adobe is Hiring for Full Stack Developer | Apply Now!</h2>
+            <p><strong>Company:</strong> Adobe</p>
+            <p><strong>Position:</strong> Full Stack Developer</p>
+            <p><strong>Location:</strong> Bangalore, India</p>
+            <p><strong>Qualifications:</strong> B.Tech or M.Tech degree</p>
+            <p><strong>Experience:</strong> Freshers/Experienced</p>
+            <h3>Key Responsibilities:</h3>
+            <ul>
+                <li>Collaborate with teams to design web applications.</li>
+                <li>Develop applications to manage Experience Cloud implementation.</li>
+                <li>Write effective APIs for Martech solutions.</li>
+                <li>Build and launch new features.</li>
+            </ul>
+            <h3>Preferred Skills:</h3>
+            <ul>
+                <li>Experience with technology stacks like MERN or MEAN.</li>
+                <li>Proficiency with front-end languages and libraries.</li>
+                <li>Knowledge of multiple back-end languages.</li>
+                <li>Good understanding of web analytics and reporting tools.</li>
+            </ul>
+            <a href="https://careers.adobe.com" target="_blank" class="apply-button">Apply Now</a>
+            <section id="view-count">
+                <h3>Page Views: <span id="count">Loading...</span></h3>
+            </section>
+        </article>
+    </main>
+    <footer>
+        <p>© 2024 Jobs Adda. All Rights Reserved.</p>
+        <div class="contact-info">
+            <p>Contact Us:</p>
+            <a href="https://wa.me/9949065883" target="_blank">WhatsApp: 9949065883</a>
+            <a href="https://wa.me/8296753692" target="_blank">WhatsApp: 8296753692</a>
+            <a href="mailto:Softwarejobsadda2@gmail.com">Email: Softwarejobsadda2@gmail.com</a>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fetch and display view count
+            fetch('/api/view-count')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('count').textContent = data.count;
+                })
+                .catch(error => console.error('Error fetching view count:', error));
+        });
+    </script>
+</body>
+</html>
